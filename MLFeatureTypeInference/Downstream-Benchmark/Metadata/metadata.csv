@@ -1,0 +1,31 @@
+name,link,target
+Cancer,https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Coimbra,Classification
+Mfeat,https://www.openml.org/d/12,class
+Nursery,https://archive.ics.uci.edu/ml/datasets/nursery,class
+Audiology,https://www.openml.org/d/7,class
+Hayes,https://archive.ics.uci.edu/ml/datasets/Hayes-Roth,class
+Supreme,https://www.openml.org/d/728,binaryClass
+Flares,https://archive.ics.uci.edu/ml/datasets/Solar+Flare,c
+Kropt,https://www.openml.org/d/184,game
+Boxing,https://www.openml.org/d/444,Winner
+Flags,https://www.openml.org/d/1012,binaryClass
+Diggle,https://www.openml.org/d/818,binaryClass
+Hearts,https://archive.ics.uci.edu/ml/datasets/heart+Disease,target
+Sleuth,https://www.openml.org/d/862,binaryClass
+Apnea2,https://www.openml.org/d/765,binaryClass
+Auto-MPG,https://www.kaggle.com/uciml/autompg-dataset,origin
+Churn,https://www.kaggle.com/blastchar/telco-customer-churn,Churn
+NYC,https://www.kaggle.com/mavezdabas/nychourlytemperature,Conditions
+BBC,https://www.kaggle.com/yufengdev/bbc-fulltext-and-category,category
+Articles,https://www.kaggle.com/asad1m9a9h6mood/news-articles,NewsType
+Clothing,https://www.kaggle.com/nicapotato/womens-ecommerce-clothing-reviews,Rating
+IOT,https://www.kaggle.com/atulanandjha/temperature-readings-iot-devices,out/in
+Zoo,https://archive.ics.uci.edu/ml/datasets/Zoo,class_type
+PBCseq,https://www.openml.org/d/802,binaryClass
+Pokemon,https://www.kaggle.com/rounakbanik/pokemon,type1
+President,https://www.kaggle.com/fivethirtyeight/2016-election-polls,state
+MBA,https://www.openml.org/d/190,grade_point_average
+Vineyard,https://www.openml.org/d/500,Lugs
+Apnea,https://www.openml.org/d/555,Count
+Accident,https://www.kaggle.com/kashnitsky/mlcourse,"Accidental deaths in USA: monthly, 1973 ? 1978"
+Car Fuel,https://www.kaggle.com/anderas/car-consume?select=measurements.csv,speed
