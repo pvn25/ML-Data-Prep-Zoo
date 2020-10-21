@@ -60,7 +60,7 @@ The following table presents the binarized class-specific accuracy, precision, a
 
 ## Leaderboard on our Labeled Data
 
-We invite researchers and practitioners to use our datasets and contribute to create better featurizations and models. By submitting results, you acknowledge that your holdout test results([X_test.csv,y_test.csv]) are obtained purely by training on the training set([X_train.csv,y_train.csv]).
+We invite researchers and practitioners to use our datasets and contribute to create better featurizations and models. By submitting results, you acknowledge that your holdout test results (data_test.csv) are obtained purely by training on the training set (data_train.csv).
 
 <!-- ![TableAccuracy](images/table_models_all.png) -->
 
