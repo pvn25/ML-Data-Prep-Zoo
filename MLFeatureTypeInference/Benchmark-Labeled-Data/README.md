@@ -12,8 +12,8 @@ Sentence:3,
 URL: 4,
 Numbers: 5,
 List: 6,
-Unusable: 7,
-Custom Object: 8
+Not-Generalizable: 7,
+Custom Object (or Context-Specific): 8
 
 * Metadata/ contains the record id and the source details of the raw CSV files.
 
