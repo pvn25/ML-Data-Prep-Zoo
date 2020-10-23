@@ -3,6 +3,18 @@
 
 * data_train and data_test contains the base featurization split of the raw CSV files
 
+* y_act column in the files denote the ground truth label. The coding of the labels is given as follows:
+
+Numeric : 0,
+Categorical: 1,
+Datetime:2,
+Sentence:3,
+URL: 4,
+Numbers: 5,
+List: 6,
+Unusable: 7,
+Custom Object: 8
+
 * Metadata/ contains the record id and the source details of the raw CSV files.
 
 * Our-Base-Featurization-Split/ contains the additional features extracted from the base featurized files for the ML models
