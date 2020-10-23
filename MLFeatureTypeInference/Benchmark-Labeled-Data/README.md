@@ -5,7 +5,7 @@
 
 * y_act column in the files denote the ground truth label. The coding of the labels is given as follows:
 
-Numeric : 0,
+Numeric : 0 <br />
 Categorical: 1,
 Datetime:2,
 Sentence:3,
