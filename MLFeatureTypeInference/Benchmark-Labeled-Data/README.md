@@ -5,15 +5,15 @@
 
 * y_act column in the files denote the ground truth label. The coding of the labels is given as follows:
 
-Numeric : 0 <br />
-Categorical: 1 <br />
-Datetime:2 <br />
-Sentence:3 <br />
-URL: 4 <br />
-Numbers: 5 <br />
-List: 6 <br />
-Not-Generalizable: 7 <br />
-Custom Object (or Context-Specific): 8
+* Numeric : 0 <br />
+* Categorical: 1 <br />
+* Datetime:2 <br />
+* Sentence:3 <br />
+* URL: 4 <br />
+* Numbers: 5 <br />
+* List: 6 <br />
+* Not-Generalizable: 7 <br />
+* Custom Object (or Context-Specific): 8
 
 * Metadata/ contains the record id and the source details of the raw CSV files.
 
