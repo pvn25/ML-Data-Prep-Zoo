@@ -4,7 +4,7 @@ This [project](https://adalabucsd.github.io/sortinghat.html) is about inferring 
 
 ## Changelog
 
-03/31/21 t1v2.0. Corrected 32 examples in our labeled dataset.
+-`03/31/21` t1v2.0. Corrected 32 examples in our labeled dataset.
 
 
 ## Benchmark Labeled Data
