@@ -1,10 +1,10 @@
 # Task: ML Feature Type Inference
 
-This [project](https://adalabucsd.github.io/sortinghat.html) is about inferring ML feature types over tabular data. Please refer to our [tech report](https://adalabucsd.github.io/papers/TR_2021_SortingHat.pdf) for more details.
+This [project](https://adalabucsd.github.io/sortinghat.html) is about inferring ML feature types over tabular data. Please refer to our [paper](https://adalabucsd.github.io/papers/2021_SortingHat_SIGMOD.pdf) and [tech report](https://adalabucsd.github.io/papers/TR_2021_SortingHat.pdf) for more details.
 
 ## Changelog
 
-t1v2.0 Corrected 32 examples in our labeled dataset.
+t1v2.0. Corrected 32 examples in our labeled dataset.
 
 
 ## Benchmark Labeled Data
@@ -32,32 +32,32 @@ Downstream-Benchmark/ contain links to the datasets, their source details, and d
 
 The following table presents the binarized class-specific accuracy, precision, and recall of different approaches on our **benchmark labeled held-out test dataset.**
 
-| Feature Type          | Metric           |     TFDV          |     Pandas    |     TransmogrifAI    |     AutoGluon     |     Log Reg       |     CNN           |     Rand   Forest    |
-|-----------------------|------------------|-------------------|---------------|----------------------|-------------------|-------------------|-------------------|----------------------|
-|     Numeric           |     Precision    |     0.657         |     0.614     |     0.605            |     0.646         |     0.909         |     0.929         |     0.934            |
-|                       |     Recall       |     1             |     1         |     1                |     1             |     0.943         |     0.941         |     0.984            |
-|                       |     Accuracy     |     0.814         |     0.776     |     0.767            |     0.805         |     0.946         |     0.953         |     0.97             |
-|                       |                  |                   |               |                      |                   |                   |                   |                      |
-|     Categorical       |     Precision    |     0.396         |     -         |     -                |     0.667         |     0.808         |     0.846         |     0.913            |
-|                       |     Recall       |     0.652         |               |                      |     0.534         |     0.884         |     0.928         |     0.943            |
-|                       |     Accuracy     |     0.691         |               |                      |     0.831         |     0.925         |     0.945         |     0.966            |
-|                       |                  |                   |               |                      |                   |                   |                   |                      |
-|     Datetime          |     Precision    |     0.985         |     0.956     |     1                |     1             |     0.951         |     0.925         |     0.945            |
-|                       |     Recall       |     0.475         |     0.915     |     0.454            |     0.844         |     0.972         |     0.965         |     0.972            |
-|                       |     Accuracy     |     0.962         |     0.991     |     0.961            |     0.989         |     0.994         |     0.992         |     0.994            |
-|                       |                  |                   |               |                      |                   |                   |                   |                      |
-|     Sentence          |     Precision    |     0.472         |     -         |     -                |     0.516         |     0.913         |     0.725         |     0.865            |
-|                       |     Recall       |     0.457         |               |                      |     0.902         |     0.793         |     0.804         |     0.902            |
-|                       |     Accuracy     |     0.951         |               |                      |     0.956         |     0.987         |     0.977         |     0.989            |
-|                       |                  |                   |               |                      |                   |                   |                   |                      |
-|     Not-Generalizable |     Precision    |     -             |     -         |     -                |     0.465         |     0.732         |     0.81          |     0.934            |
-|                       |     Recall       |                   |               |                      |     0.53          |     0.732         |     0.66          |     0.86             |
-|                       |     Accuracy     |                   |               |                      |     0.883         |     0.947         |     0.937         |     0.978            |
-|                       |                  |                   |               |                      |                   |                   |                   |                      |
-|     Context-Specific  |     Precision    |     -             |     0.08      |     0.074            |     -             |     0.747         |     0.741         |     0.859            |
-|                       |     Recall       |                   |     0.295     |     0.295            |                   |     0.621         |     0.663         |     0.705            |
-|                       |     Accuracy     |                   |     0.609     |     0.582            |                   |     0.944         |     0.946         |     0.961            |
-|                       |                  |                   |               |                      |                   |                   |                   |                      |
+| Feature Type          | Metric           |     TFDV     |     Pandas    |     TransmogrifAI    |     AutoGluon    |     Log Reg    |     CNN      |     Rand   Forest    |
+|-----------------------|------------------|--------------|---------------|----------------------|------------------|----------------|--------------|----------------------|
+|     Numeric           |     Precision    |      0.64    |      0.615    |     0.605            |       0.648      |       0.91     |     0.892    |         0.936        |
+|                       |     Recall       |       1      |        1      |     1                |         1        |      0.931     |     0.977    |         0.987        |
+|                       |     Accuracy     |     0.799    |      0.777    |     0.767            |       0.807      |      0.943     |      0.95    |         0.971        |
+|                       |                  |              |               |                      |                  |                |              |                      |
+|     Categorical       |     Precision    |     0.414    |     -         |     -                |       0.703      |      0.826     |     0.875    |          0.91        |
+|                       |     Recall       |     0.643    |               |                      |       0.534      |      0.891     |     0.888    |         0.954        |
+|                       |     Accuracy     |     0.708    |               |                      |       0.841      |      0.931     |     0.945    |         0.968        |
+|                       |                  |              |               |                      |                  |                |              |                      |
+|     Datetime          |     Precision    |     0.972    |     0.956     |     1                |         1        |      0.985     |     0.957    |         0.986        |
+|                       |     Recall       |     0.489    |     0.915     |     0.454            |       0.887      |      0.957     |     0.957    |         0.972        |
+|                       |     Accuracy     |     0.963    |     0.991     |     0.961            |       0.992      |      0.996     |     0.994    |         0.997        |
+|                       |                  |              |               |                      |                  |                |              |                      |
+|     Sentence          |     Precision    |     0.475    |     -         |     -                |       0.512      |      0.882     |     0.871    |         0.899        |
+|                       |     Recall       |     0.511    |               |                      |       0.913      |      0.728     |     0.804    |          0.87        |
+|                       |     Accuracy     |     0.951    |               |                      |       0.956      |      0.983     |     0.985    |         0.989        |
+|                       |                  |              |               |                      |                  |                |              |                      |
+|     Not-Generalizable |     Precision    |     -        |     -         |     -                |        0.45      |      0.709     |     0.714    |         0.946        |
+|                       |     Recall       |              |               |                      |        0.54      |      0.726     |     0.777    |         0.888        |
+|                       |     Accuracy     |              |               |                      |       0.879      |      0.938     |     0.942    |         0.982        |
+|                       |                  |              |               |                      |                  |                |              |                      |
+|     Context-Specific  |     Precision    |     -        |      0.074    |         0.068        |     -            |       0.72     |     0.848    |         0.852        |
+|                       |     Recall       |              |      0.281    |         0.276        |                  |      0.638     |     0.514    |         0.714        |
+|                       |     Accuracy     |              |      0.606    |         0.579        |                  |      0.943     |     0.946    |         0.962        |
+|                       |                  |              |               |                      |                  |                |              |                      |
 
 <!-- ![TableComparison](images/table_comparison.png) -->
 
