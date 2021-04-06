@@ -1,6 +1,6 @@
 # Task: ML Feature Type Inference
 
-This [project](https://adalabucsd.github.io/sortinghat.html) is about inferring ML feature types from the raw CSV files. Please refer to our [tech report](https://adalabucsd.github.io/papers/TR_2020_SortingHat.pdf) for more details.
+This [project](https://adalabucsd.github.io/sortinghat.html) is about inferring ML feature types from the raw CSV files. Please refer to our [tech report](https://adalabucsd.github.io/papers/TR_2021_SortingHat.pdf) for more details.
 
 
 ## Benchmark Labeled Data
