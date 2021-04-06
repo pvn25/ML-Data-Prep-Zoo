@@ -32,31 +32,31 @@ Downstream-Benchmark/ contain links to the datasets, their source details, and d
 
 The following table presents the binarized class-specific accuracy, precision, and recall of different approaches on our **benchmark labeled held-out test dataset.**
 
-| Feature Type          | Metric           |     TFDV     |     Pandas    |     TransmogrifAI    |     AutoGluon    |     Log Reg    |     CNN      |     Rand   Forest    |
-|-----------------------|------------------|--------------|---------------|----------------------|------------------|----------------|--------------|----------------------|
-|     Numeric           |     Precision    |      0.64    |      0.615    |     0.605            |       0.648      |       0.91     |     0.892    |         0.936        |
-|                       |     Recall       |       1      |        1      |     1                |         1        |      0.931     |     0.977    |         0.987        |
-|                       |     Accuracy     |     0.799    |      0.777    |     0.767            |       0.807      |      0.943     |      0.95    |         0.971        |
+|      Feature Type     |      Metric      |      TFDV    |     Pandas    |     TransmogrifAI    |     AutoGluon    |     Log Reg    |      CNN     |     Rand   Forest    |
+|:---------------------:|:----------------:|:------------:|:-------------:|:--------------------:|:----------------:|:--------------:|:------------:|:--------------------:|
+|         Numeric       |     Precision    |      0.64    |      0.615    |         0.605        |       0.648      |       0.91     |     0.892    |         0.936        |
+|                       |       Recall     |       1      |        1      |           1          |         1        |      0.931     |     0.977    |         0.987        |
+|                       |      Accuracy    |     0.799    |      0.777    |         0.767        |       0.807      |      0.943     |      0.95    |         0.971        |
 |                       |                  |              |               |                      |                  |                |              |                      |
-|     Categorical       |     Precision    |     0.414    |     -         |     -                |       0.703      |      0.826     |     0.875    |          0.91        |
-|                       |     Recall       |     0.643    |               |                      |       0.534      |      0.891     |     0.888    |         0.954        |
-|                       |     Accuracy     |     0.708    |               |                      |       0.841      |      0.931     |     0.945    |         0.968        |
+|       Categorical     |     Precision    |     0.414    |        -      |           -          |       0.703      |      0.826     |     0.875    |          0.91        |
+|                       |       Recall     |     0.643    |               |                      |       0.534      |      0.891     |     0.888    |         0.954        |
+|                       |      Accuracy    |     0.708    |               |                      |       0.841      |      0.931     |     0.945    |         0.968        |
 |                       |                  |              |               |                      |                  |                |              |                      |
-|     Datetime          |     Precision    |     0.972    |     0.956     |     1                |         1        |      0.985     |     0.957    |         0.986        |
-|                       |     Recall       |     0.489    |     0.915     |     0.454            |       0.887      |      0.957     |     0.957    |         0.972        |
-|                       |     Accuracy     |     0.963    |     0.991     |     0.961            |       0.992      |      0.996     |     0.994    |         0.997        |
+|        Datetime       |     Precision    |     0.972    |      0.956    |           1          |         1        |      0.985     |     0.957    |         0.986        |
+|                       |       Recall     |     0.489    |      0.915    |         0.454        |       0.887      |      0.957     |     0.957    |         0.972        |
+|                       |      Accuracy    |     0.963    |      0.991    |         0.961        |       0.992      |      0.996     |     0.994    |         0.997        |
 |                       |                  |              |               |                      |                  |                |              |                      |
-|     Sentence          |     Precision    |     0.475    |     -         |     -                |       0.512      |      0.882     |     0.871    |         0.899        |
-|                       |     Recall       |     0.511    |               |                      |       0.913      |      0.728     |     0.804    |          0.87        |
-|                       |     Accuracy     |     0.951    |               |                      |       0.956      |      0.983     |     0.985    |         0.989        |
+|        Sentence       |     Precision    |     0.475    |        -      |           -          |       0.512      |      0.882     |     0.871    |         0.899        |
+|                       |       Recall     |     0.511    |               |                      |       0.913      |      0.728     |     0.804    |          0.87        |
+|                       |      Accuracy    |     0.951    |               |                      |       0.956      |      0.983     |     0.985    |         0.989        |
 |                       |                  |              |               |                      |                  |                |              |                      |
-|     Not-Generalizable |     Precision    |     -        |     -         |     -                |        0.45      |      0.709     |     0.714    |         0.946        |
-|                       |     Recall       |              |               |                      |        0.54      |      0.726     |     0.777    |         0.888        |
-|                       |     Accuracy     |              |               |                      |       0.879      |      0.938     |     0.942    |         0.982        |
+|     Not-Generalizable |     Precision    |       -      |        -      |           -          |        0.45      |      0.709     |     0.714    |         0.946        |
+|                       |       Recall     |              |               |                      |        0.54      |      0.726     |     0.777    |         0.888        |
+|                       |      Accuracy    |              |               |                      |       0.879      |      0.938     |     0.942    |         0.982        |
 |                       |                  |              |               |                      |                  |                |              |                      |
-|     Context-Specific  |     Precision    |     -        |      0.074    |         0.068        |     -            |       0.72     |     0.848    |         0.852        |
-|                       |     Recall       |              |      0.281    |         0.276        |                  |      0.638     |     0.514    |         0.714        |
-|                       |     Accuracy     |              |      0.606    |         0.579        |                  |      0.943     |     0.946    |         0.962        |
+|      Context-Specific |     Precision    |       -      |      0.074    |         0.068        |         -        |       0.72     |     0.848    |         0.852        |
+|                       |       Recall     |              |      0.281    |         0.276        |                  |      0.638     |     0.514    |         0.714        |
+|                       |      Accuracy    |              |      0.606    |         0.579        |                  |      0.943     |     0.946    |         0.962        |
 |                       |                  |              |               |                      |                  |                |              |                      |
 
 <!-- ![TableComparison](images/table_comparison.png) -->
