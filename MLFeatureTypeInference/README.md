@@ -21,7 +21,7 @@ Pre-trained Models/ contain the trained ML models ready for inference.
 
 ## Library
 
-Library/ contain our models and featurization routines wrapped under functions in a Python library. It explains how to load the pre-trained models for inference.
+Library/ contain our models and featurization routines wrapped under functions in a Python library. It explains how to load the pre-trained models for inference. Install dependencies with `pip install -r requirements.txt`
 
 ## Downstream Benchmark
 
