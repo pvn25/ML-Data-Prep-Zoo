@@ -30,8 +30,9 @@ import copy
 import tensorflow_data_validation as tfdv
 # print(tfdv.version.__version__)
 from tensorflow_data_validation.utils.schema_util import get_feature,get_categorical_features,get_categorical_numeric_features,is_categorical_feature,get_multivalent_features
+import joblib
 
-rf_Filename = "RandForest.pkl"
+rf_Filename = "resources/RandForest.pkl"
 with open(rf_Filename, 'rb') as file:  Pickled_LR_Model = pickle.load(file)
 
 del_pattern = r'([^,;\|]+[,;\|]{1}[^,;\|]+){1,}'
