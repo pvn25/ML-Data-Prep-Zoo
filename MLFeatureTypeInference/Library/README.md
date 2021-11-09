@@ -22,7 +22,6 @@ import sortinghat.pylib as pl
 
 
 ```bash
-# rf: Random Forest, neural: Neural Model, knn: K-nn, logreg: Logistic Regression, svm: RBF_SVM
 dataDownstream = pd.read_csv('adult.csv')
 
 ```

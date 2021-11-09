@@ -27,6 +27,10 @@ from nltk.tokenize import word_tokenize
 import numpy as np
 import copy
 import joblib
+from keras.preprocessing import text as keras_text, sequence as keras_seq
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
+from sklearn.metrics import accuracy_score, confusion_matrix
+from keras.models import load_model
 
 rf_Filename = "resources/RandForest.pkl"
 with open(rf_Filename, 'rb') as file:  Pickled_LR_Model = pickle.load(file)
@@ -293,10 +297,10 @@ def FeaturizeFile(df):
 
 
 # vectorizer,vectorizer1,vectorizer2 = CountVectorizer(decode_error="replace",vocabulary=pickle.load(open("vectorizer.pkl", "rb"))),CountVectorizer(decode_error="replace",vocabulary=pickle.load(open("vectorizer1.pkl", "rb"))),CountVectorizer(decode_error="replace",vocabulary=pickle.load(open("vectorizer2.pkl", "rb")))
-vectorizerName = joblib.load("resources/dictionaryName.pkl")
-vectorizerSample = joblib.load("resources/dictionarySample.pkl")
+vectorizerName = joblib.load("resources/Dictionary/dictionaryName.pkl")
+vectorizerSample = joblib.load("resources/Dictionary/dictionarySample.pkl")
 
-def FeatureExtraction(data):
+def FeatureExtraction(data, useSamples=0):
 
     data1 = data[['total_vals', 'num_nans', '%_nans', 'num_of_dist_val', '%_dist_val', 'mean', 'std_dev', 'min_val', 'max_val','has_delimiters', 'has_url', 'has_email', 'has_date', 'mean_word_count',
        'std_dev_word_count', 'mean_stopword_total', 'stdev_stopword_total',
@@ -309,28 +313,111 @@ def FeatureExtraction(data):
     arr = data['Attribute_name'].values
     arr = [str(x) for x in arr]
     
-    arr1 = data['sample_1'].values
-    arr1 = [str(x) for x in arr1]
-    arr2 = data['sample_2'].values
-    arr2 = [str(x) for x in arr2]
-    arr3 = data['sample_3'].values
-    arr3 = [str(x) for x in arr3]    
-    print(len(arr1),len(arr2))
-
-    X = vectorizerName.transform(arr)
-    X1 = vectorizerSample.transform(arr1)
-    X2 = vectorizerSample.transform(arr2)
-
+    X = vectorizerName.transform(arr)    
     attr_df = pd.DataFrame(X.toarray())
-    sample1_df = pd.DataFrame(X1.toarray())
-    sample2_df = pd.DataFrame(X2.toarray())
-    print(len(data1),len(attr_df),len(sample1_df),len(sample2_df))
-    
-    data2 = pd.concat([data1, attr_df], axis=1, sort=False)
-    print(len(data2))
+
+    if useSamples:
+        arr1 = data['sample_1'].values
+        arr1 = [str(x) for x in arr1]
+        arr2 = data['sample_2'].values
+        arr2 = [str(x) for x in arr2]
+
+        X1 = vectorizerSample.transform(arr1)
+        X2 = vectorizerSample.transform(arr2)    
+
+        sample1_df = pd.DataFrame(X1.toarray())
+        sample2_df = pd.DataFrame(X2.toarray())
+        data2 = pd.concat([data1, attr_df, sample1_df, sample2_df], axis=1, sort=False)
+    else:
+        data2 = pd.concat([data1, attr_df], axis=1, sort=False)
+        
     return data2
 
 
 def Load_RF(df):
 	y_RF = Pickled_LR_Model.predict(df).tolist()
 	return y_RF
+
+def ProcessStats(data):
+
+    data1 = data[['total_vals', 'num_nans', '%_nans', 'num_of_dist_val', '%_dist_val', 'mean',
+           'std_dev', 'min_val', 'max_val', 'mean_word_count', 'std_dev_word_count',
+            'mean_stopword_total', 'mean_whitespace_count',
+           'mean_char_count', 'mean_delim_count', 'stdev_stopword_total',
+           'stdev_whitespace_count', 'stdev_char_count', 'stdev_delim_count'
+           ]]
+
+    data1 = data1.reset_index(drop=True)
+    data1 = data1.fillna(0)
+
+    data1 = data1.rename(columns={
+        'mean': 'scaled_mean',
+        'std_dev': 'scaled_std_dev',
+        'min_val': 'scaled_min',
+        'max_val': 'scaled_max',        
+        'mean_word_count': 'scaled_mean_token_count',
+        'std_dev_word_count': 'scaled_std_dev_token_count',
+        '%_nans': 'scaled_perc_nans',
+        'mean_stopword_total': 'scaled_mean_stopword_total',
+        'mean_whitespace_count': 'scaled_mean_whitespace_count',
+        'mean_char_count': 'scaled_mean_char_count',
+        'mean_delim_count': 'scaled_mean_delim_count',
+        'stdev_stopword_total': 'scaled_stdev_stopword_total',
+        'stdev_whitespace_count': 'scaled_stdev_whitespace_count',
+        'stdev_char_count': 'scaled_stdev_char_count',
+        'stdev_delim_count': 'scaled_stdev_delim_count'
+    })
+
+    def abs_limit(x):
+        if abs(x) > 10000: return 10000*np.sign(x)
+        return x
+
+    data1['scaled_mean'] = data1['scaled_mean'].apply(abs_limit)
+    data1['scaled_std_dev'] = data1['scaled_std_dev'].apply(abs_limit)
+    data1['scaled_min'] = data1['scaled_min'].apply(abs_limit)    
+    data1['scaled_max'] = data1['scaled_max'].apply(abs_limit)
+    data1['total_vals'] = data1['total_vals'].apply(abs_limit)
+    data1['num_nans'] = data1['num_nans'].apply(abs_limit)    
+    data1['num_of_dist_val'] = data1['num_of_dist_val'].apply(abs_limit) 
+    
+    column_names_to_normalize = [
+                                'total_vals',
+                                'num_nans',
+                                'num_of_dist_val',
+                                'scaled_mean','scaled_std_dev','scaled_min','scaled_max'
+                                ]
+    x = data1[column_names_to_normalize].values
+    x = np.nan_to_num(x)
+    x_scaled = StandardScaler().fit_transform(x)
+    df_temp = pd.DataFrame(
+        x_scaled, columns=column_names_to_normalize, index=data1.index)
+    data1[column_names_to_normalize] = df_temp
+
+#     y.y_act = y.y_act.astype(float)
+    return data1
+
+def Load_CNN(df):
+    CNNModel = load_model('resources/CNN.h5')
+    
+    dataFeaturized = FeaturizeFile(df)
+    structured_data_test = ProcessStats(dataFeaturized)    
+    
+    with open('resources/Dictionary/keras_dictionaryName.pkl', 'rb') as handle: tokenizer = pickle.load(handle)
+    with open('resources/Dictionary/keras_dictionarySample.pkl', 'rb') as handle: tokenizer1 = pickle.load(handle)
+
+    list_sentences_test = dataFeaturized['Attribute_name'].values
+    list_sentences_test1 = dataFeaturized['sample_1'].values
+
+    for i in range(len(list_sentences_test)): list_sentences_test[i] = str(list_sentences_test[i]) 
+    for i in range(len(list_sentences_test1)): list_sentences_test1[i] = str(list_sentences_test1[i]) 
+
+    list_tokenized_test = tokenizer.texts_to_sequences(list_sentences_test)
+    X_te = keras_seq.pad_sequences(list_tokenized_test, maxlen=256)
+
+    list_tokenized_test1 = tokenizer.texts_to_sequences(list_sentences_test1)
+    X_te1 = keras_seq.pad_sequences(list_tokenized_test1, maxlen=256)
+
+    y_pred = CNNModel.predict([X_te,X_te1,structured_data_test])
+    y_CNN = [np.argmax(i) for i in y_pred]
+    return y_CNN
+	
